@@ -8,14 +8,14 @@ namespace PROGPOE3.Controllers
     public class ClaimsController : Controller
     {
         private readonly ApplicationDbContext _context;
-
+        // Hardcoded users for authentication
         private readonly Dictionary<string, (string Password, string Role)> _users = new()
         {
             { "lecturer@gmail.com", ("123", "Lecturer") },
             { "coordinator@gmail.com", ("123", "Coordinator") },
             { "manager@gmail.com", ("123", "Manager") }
         };
-
+        // Constructor
         public ClaimsController(ApplicationDbContext context)
         {
             _context = context;
@@ -114,7 +114,7 @@ namespace PROGPOE3.Controllers
             }
             return RedirectToAction(nameof(Index));
         }
-
+        //
         // Reject claim
         [HttpPost]
         public async Task<IActionResult> Reject(int id)
