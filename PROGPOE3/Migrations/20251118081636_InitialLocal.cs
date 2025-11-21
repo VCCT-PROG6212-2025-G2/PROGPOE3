@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
-
+//
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
 namespace PROGPOE3.Migrations
@@ -15,7 +15,7 @@ namespace PROGPOE3.Migrations
             migrationBuilder.CreateTable(
                 name: "ClaimStatuses",
                 columns: table => new
-                {
+                {   // Define columns
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     StatusName = table.Column<string>(type: "nvarchar(max)", nullable: false)
@@ -24,7 +24,7 @@ namespace PROGPOE3.Migrations
                 {
                     table.PrimaryKey("PK_ClaimStatuses", x => x.Id);
                 });
-
+            // Create Claims table with foreign key to ClaimStatuses
             migrationBuilder.CreateTable(
                 name: "Claims",
                 columns: table => new
