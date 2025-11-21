@@ -1,0 +1,69 @@
+﻿@model IEnumerable<PROGPOE3.Models.Claim>
+
+@{
+    ViewData["Title"] = "Claims List";
+    var role = ViewBag.UserRole as string;
+}
+
+<h2>Claims List</h2>
+
+@if (TempData["Warning"] != null)
+{
+    <div class="alert alert-warning">@TempData["Warning"]</div>
+}
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Submit New Claim</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Type</th>
+            <th>Hours</th>
+            <th>Rate</th>
+            <th>Amount</th>
+            <th>Notes</th>
+            <th>Document</th>
+            <th>Date</th>
+            <th>Status</th>
+            @if (role == "Coordinator" || role == "Manager")
+            {
+                <th>Actions</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.ClaimType</td>
+                <td>@c.HoursWorked</td>
+                <td>@c.HourlyRate</td>
+                <td>@c.Amount</td>
+                <td>@c.Notes</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(c.SupportingDocument))
+                    {
+                        <a href="@c.SupportingDocument" target="_blank">View</a>
+                    }
+                </td>
+                <td>@c.DateSubmitted.ToString("yyyy-MM-dd")</td>
+                <td>@c.ClaimStatus?.StatusName</td>
+
+                @if (role == "Coordinator" || role == "Manager")
+                {
+                    <td>
+                        <form asp-action="Approve" asp-route-id="@c.Id" method="post" style="display:inline;">
+                            <button class="btn btn-success btn-sm">Approve</button>
+                        </form>
+
+                        <form asp-action="Reject" asp-route-id="@c.Id" method="post" style="display:inline;">
+                            <button class="btn btn-danger btn-sm">Reject</button>
+                        </form>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>

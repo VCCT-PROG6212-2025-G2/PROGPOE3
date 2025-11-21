@@ -1,0 +1,40 @@
+﻿@model IEnumerable<PROGPOE3.Models.Claim>
+
+@{
+    ViewData["Title"] = "Approved Claims Report";
+}
+
+<h2>Approved Claims Report</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Lecturer</th>
+            <th>Type</th>
+            <th>Hours</th>
+            <th>Rate</th>
+            <th>Amount</th>
+            <th>Date Submitted</th>
+            <th>Document</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var c in Model)
+        {
+            <tr>
+                <td>@c.Lecturer?.Name</td>
+                <td>@c.ClaimType</td>
+                <td>@c.HoursWorked</td>
+                <td>@c.HourlyRate</td>
+                <td>@c.Amount</td>
+                <td>@c.DateSubmitted.ToString("yyyy-MM-dd")</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(c.SupportingDocument))
+                    {
+                        <a href="@c.SupportingDocument" target="_blank">View</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
