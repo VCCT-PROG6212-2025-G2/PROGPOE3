@@ -11,7 +11,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 // Enable session for user role tracking
 builder.Services.AddSession();
-
+// Build app
 var app = builder.Build();
 
 // Middleware
