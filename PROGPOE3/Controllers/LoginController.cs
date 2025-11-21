@@ -18,7 +18,7 @@ namespace PROGPOE3.Controllers
         {
             return View();
         }
-
+        
         // POST: Login
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -27,7 +27,7 @@ namespace PROGPOE3.Controllers
             if (ModelState.IsValid)
             {
                 if (_users.TryGetValue(model.Email, out var user))
-                {
+                {   // Check password
                     if (user.Password == model.Password)
                     {
                         // Store role and email in TempData for now
@@ -38,7 +38,7 @@ namespace PROGPOE3.Controllers
                         return RedirectToAction("Index", "Claims");
                     }
                 }
-
+                // Invalid credentials
                 ViewBag.Error = "Invalid email or password.";
             }
 
