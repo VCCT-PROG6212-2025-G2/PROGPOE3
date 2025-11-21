@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
 namespace PROGPOE3.Models
-{
+{//The model for the Lecturer entity
     public class Lecturer
     {
         public int Id { get; set; }

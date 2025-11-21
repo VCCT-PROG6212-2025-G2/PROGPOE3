@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PROGPOE3.Models
 {
+    //The Main model for the Claim entity
     public class Claim
     {
         public int Id { get; set; }

@@ -1,5 +1,5 @@
 ﻿namespace PROGPOE3.Models
-{
+{//Model for Login View
     public class LoginViewModel
     {
         public string Email { get; set; } = string.Empty;
