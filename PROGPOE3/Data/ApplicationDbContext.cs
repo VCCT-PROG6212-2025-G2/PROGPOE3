@@ -7,10 +7,11 @@ namespace PROGPOE3.Data
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options) { }
-
+        // DbSets for the entities
         public DbSet<Claim> Claims { get; set; }
+        // DbSet for ClaimStatus
         public DbSet<ClaimStatus> ClaimStatuses { get; set; }
-
+        // DbSet for Lecturer
         public DbSet<Lecturer> Lecturers { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
