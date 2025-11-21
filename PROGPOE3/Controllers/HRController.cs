@@ -8,12 +8,12 @@ namespace PROGPOE3.Controllers
     public class HRController : Controller
     {
         private readonly ApplicationDbContext _context;
-
+        // Constructor
         public HRController(ApplicationDbContext context)
         {
             _context = context;
         }
-
+        // GET: HR/ApprovedClaimsReport
         // REPORT: Approved Claims
         public async Task<IActionResult> ApprovedClaimsReport()
         {
@@ -26,7 +26,7 @@ namespace PROGPOE3.Controllers
 
             return View(approvedClaims);
         }
-
+        // GET: HR/Lecturers
         // LIST LECTURERS
         public async Task<IActionResult> Lecturers()
         {
