@@ -7,7 +7,7 @@ namespace PROGPOE3.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
+        // Constructor
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
