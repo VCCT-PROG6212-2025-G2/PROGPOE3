@@ -12,12 +12,12 @@ namespace PROGPOE3.Controllers
         {
             _logger = logger;
         }
-
+        // Home Page View
         public IActionResult Index()
         {
             return View();
         }
-
+        // Privacy Policy View
         public IActionResult Privacy()
         {
             return View();
